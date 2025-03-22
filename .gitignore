@@ -1,0 +1,53 @@
+# Unity specific
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Mm]emoryCaptures/
+
+# Visual Studio / Rider
+.vs/
+*.sln
+*.csproj
+*.unityproj
+*.user
+*.suo
+*.tmp
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.opendb
+*.VC.db
+
+# Unity-generated files
+*.unitypackage
+*.prefab.meta
+*.asset.meta
+
+# Crash reports
+*.stacktrace
+
+# Cache files
+/[Aa]ssets/[Aa]ddressable[Aa]sset[Bb]uilds/
+/[Aa]ssets/StreamingAssets/aa/*
+
+# Exclude Player build folders
+/[Bb]uilds/
+
+# JetBrains Rider
+.idea/
+*.iml
+
+# Mac OS
+.DS_Store
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Linux
+*~
