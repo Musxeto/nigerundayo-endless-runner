@@ -14,7 +14,7 @@ public class SegmentGenerator : MonoBehaviour
     void Start()
     {
         nextSpawnPosition = Vector3.zero;
-
+        nextSpawnPosition.z += 50;
         // Spawn initial segments
         for (int i = 0; i < maxSegments; i++)
         {
