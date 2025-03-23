@@ -1,20 +1,22 @@
+using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class CoinCollector : MonoBehaviour
 {
-    public Text coinText;  // Assign a UI Text object in the Inspector
+    public TextMeshProUGUI coinText; // Change from TextMeshPro to TextMeshProUGUI
+    [SerializeField] private AudioSource coinFx;
     private int coinCount = 0;
 
     void OnTriggerEnter(Collider other)
     {
-    Debug.Log("Triggered by: " + other.gameObject.name); // Check what object is triggering
+        Debug.Log("Triggered by: " + other.gameObject.name);
 
-    if (other.CompareTag("Coin"))
-    {
-        Debug.Log("Coin collected!"); // Check if the tag is being recognized
-        Destroy(other.gameObject); 
+        if (other.CompareTag("Coin"))
+        {
+            coinCount++;
+            if (coinFx != null) coinFx.Play();
+            if (coinText != null) coinText.text = "Coins: " + coinCount;
+            Destroy(other.gameObject);
+        }
     }
-}
-
 }

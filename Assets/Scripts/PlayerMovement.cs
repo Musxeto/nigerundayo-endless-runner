@@ -1,5 +1,7 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI; // Import UI for score display
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -8,19 +10,22 @@ public class PlayerMovement : MonoBehaviour
     public float rightLimit = 5.5f;
     public float leftLimit = -5.5f;
     public float jumpForce = 5f;
+    public TextMeshProUGUI  scoreText; // UI Text element to display score
 
     private bool isGrounded = true;
     private Rigidbody rb;
+    private float startZ;
+    private int score = 0;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.useGravity = true;
+        startZ = transform.position.z; // Store the starting position
     }
 
     void Update()
     {
-
         // Move forward constantly
         transform.Translate(Vector3.forward * Time.deltaTime * playerSpeed, Space.World);
 
@@ -44,13 +49,17 @@ public class PlayerMovement : MonoBehaviour
             rb.AddForce(Vector3.up * jumpForce, ForceMode.VelocityChange);
             isGrounded = false;
         }
+
+        // Update Score
+        score = Mathf.FloorToInt(transform.position.z - startZ);
+        scoreText.text = "Score: " + score;
     }
 
     void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Collided with: " + collision.gameObject.name); // Check if it's detecting ground
+        Debug.Log("Collided with: " + collision.gameObject.name);
 
-        if (collision.gameObject.CompareTag("Ground") || rb.position.y < 1.5f)
+        if (collision.gameObject.CompareTag("Ground") || rb.position.y < 1.7f)
         {
             Debug.Log("Landed on Ground");
             isGrounded = true;

@@ -101,10 +101,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1315172d7ad53634e952f7d8f3c02048, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CollectibleType: 1
+  CollectibleType: 0
   rotate: 1
   rotationSpeed: 200
-  collectSound: {fileID: 0}
+  collectSound: {fileID: 8300000, guid: 6b967dffe5ac27c4fb833283b618d126, type: 3}
   collectEffect: {fileID: 1702657300312902, guid: a45c51da10cf1a84abc6a99c06951e3f, type: 3}
 --- !u!82 &82399120985686150
 AudioSource:
