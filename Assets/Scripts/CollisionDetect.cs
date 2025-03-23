@@ -23,25 +23,26 @@ public class CollisionDetect : MonoBehaviour
             Debug.Log("Collision with obstacle! Disabling PlayerMovement.");
             if (playerMovement != null)
             {
-                playerMovement.enabled = false; 
+                playerMovement.enabled = false;
+                playerMovement.SendMessage("SetDeadState"); 
+
                 collisionFX.Play();
                 playerAnim.GetComponent<Animator>().Play("Stumble Backwards");
                 cam.GetComponent<Animator>().Play("CollisionCam");
                 fadeOut.SetActive(true);
 
-                // Save Score & Coins
-                PlayerPrefs.SetInt("FinalScore", playerMovement.GetScore()); 
-                PlayerPrefs.SetInt("FinalCoins", coinCollector.GetCoinCount()); 
+                PlayerPrefs.SetInt("FinalScore", playerMovement.GetScore());
+                PlayerPrefs.SetInt("FinalCoins", coinCollector.GetCoinCount());
                 PlayerPrefs.Save();
 
-                // Load Game Over Scene after delay
                 Invoke("LoadGameOverScene", 3f);
             }
+
         }
     }
 
     public void LoadGameOverScene()
     {
-        SceneManager.LoadScene(2); // Make sure Scene 2 is in Build Settings
+        SceneManager.LoadScene(2); 
     }
 }

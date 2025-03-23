@@ -17,8 +17,9 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody rb;
     private float startZ;
     private int score = 0;
-    private int oldscore = 0;
     public Animator animator; 
+    private bool isDead = false;
+
 
     void Start()
     {
@@ -34,6 +35,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        if (isDead) return; // ✅ Stops everything if the player is dead
+
         // Forward movement
         transform.Translate(Vector3.forward * Time.deltaTime * playerSpeed, Space.World);
 
@@ -46,50 +49,54 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.Translate(Vector3.right * Time.deltaTime * horizontalSpeed);
         }
-        if (Keyboard.current.escapeKey.isPressed )
+        if (Keyboard.current.escapeKey.isPressed)
         {
             collisionDetect.LoadGameOverScene();
         }
-        // Jumping
-        if ((Keyboard.current.wKey.wasPressedThisFrame || Keyboard.current.upArrowKey.wasPressedThisFrame) && isGrounded)
+
+        if ((Keyboard.current.wKey.wasPressedThisFrame || Keyboard.current.upArrowKey.wasPressedThisFrame || Keyboard.current.spaceKey.wasPressedThisFrame) && isGrounded)
         {
             Debug.Log("Jumping...");
             jumpFx.Play();
 
             if (animator != null)
-                animator.GetComponent<Animator>().Play("Jump");
+                animator.Play("Jump"); 
 
-            rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0, rb.linearVelocity.z); // Reset Y velocity
+            rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0, rb.linearVelocity.z); 
             rb.AddForce(Vector3.up * jumpForce, ForceMode.VelocityChange);
             isGrounded = false;
         }
-        // animator.GetComponent<Animator>().Play("Run");
-        // Update Score
-        oldscore = score;
+
+       
+        if (!isDead && isGrounded && animator != null)
+            animator.Play("Run");
+
         score = Mathf.FloorToInt(transform.position.z - startZ);
         scoreText.text = "Score: " + score;
-        
-        if (score > oldscore && score%50 == 0)
-            playerSpeed += 0.3f;
+        if (score > 100 && score%50 == 0)
+            playerSpeed += 0.1f;
     }
+
 
     void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Collided with: " + collision.gameObject.name);
-
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.CompareTag("Ground") && !isDead) 
         {
-            Debug.Log("Landed on Ground");
             isGrounded = true;
-
             if (animator != null)
-                animator.GetComponent<Animator>().Play("Run");
+                animator.Play("Run");
         }
     }
+
 
     public int GetScore()
     {
         return score;
     }
+    public void SetDeadState()
+    {
+        isDead = true; 
+    }
+
 
 }
