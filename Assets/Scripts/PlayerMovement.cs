@@ -11,14 +11,14 @@ public class PlayerMovement : MonoBehaviour
     public float leftLimit = -5.5f;
     public float jumpForce = 7f;
     public TextMeshProUGUI scoreText;
-    
+    private CollisionDetect collisionDetect;
     [SerializeField] private AudioSource jumpFx;
     private bool isGrounded = true;
     private Rigidbody rb;
     private float startZ;
     private int score = 0;
-
-    public Animator animator; // Reference to Animator
+    private int oldscore = 0;
+    public Animator animator; 
 
     void Start()
     {
@@ -28,6 +28,8 @@ public class PlayerMovement : MonoBehaviour
 
         if (animator == null)
             animator = GetComponent<Animator>(); 
+
+        collisionDetect = GetComponent<CollisionDetect>();
     }
 
     void Update()
@@ -44,7 +46,10 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.Translate(Vector3.right * Time.deltaTime * horizontalSpeed);
         }
-
+        if (Keyboard.current.escapeKey.isPressed )
+        {
+            collisionDetect.LoadGameOverScene();
+        }
         // Jumping
         if ((Keyboard.current.wKey.wasPressedThisFrame || Keyboard.current.upArrowKey.wasPressedThisFrame) && isGrounded)
         {
@@ -58,10 +63,14 @@ public class PlayerMovement : MonoBehaviour
             rb.AddForce(Vector3.up * jumpForce, ForceMode.VelocityChange);
             isGrounded = false;
         }
-        animator.GetComponent<Animator>().Play("Run");
+        // animator.GetComponent<Animator>().Play("Run");
         // Update Score
+        oldscore = score;
         score = Mathf.FloorToInt(transform.position.z - startZ);
         scoreText.text = "Score: " + score;
+        
+        if (score > oldscore && score%50 == 0)
+            playerSpeed += 0.3f;
     }
 
     void OnCollisionEnter(Collision collision)

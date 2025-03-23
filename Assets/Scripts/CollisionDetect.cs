@@ -40,7 +40,7 @@ public class CollisionDetect : MonoBehaviour
         }
     }
 
-    void LoadGameOverScene()
+    public void LoadGameOverScene()
     {
         SceneManager.LoadScene(2); // Make sure Scene 2 is in Build Settings
     }
