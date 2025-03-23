@@ -77,4 +77,10 @@ public class PlayerMovement : MonoBehaviour
                 animator.GetComponent<Animator>().Play("Run");
         }
     }
+
+    public int GetScore()
+    {
+        return score;
+    }
+
 }

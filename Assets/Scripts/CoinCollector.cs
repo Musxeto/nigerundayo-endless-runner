@@ -19,4 +19,8 @@ public class CoinCollector : MonoBehaviour
             Destroy(other.gameObject);
         }
     }
+        public int GetCoinCount()
+        {
+            return coinCount;
+        }
 }
