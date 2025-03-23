@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 38dae2cd856c1504a97ade833a2d870f
+timeCreated: 1531419954
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 123092
+  packageName: Simple Collectibles Pack
+  packageVersion: 1.0
+  assetPath: Assets/SimpleCollectiblesPack/Materials/SwordShield.mat
+  uploadId: 255540

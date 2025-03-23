@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: 1315172d7ad53634e952f7d8f3c02048
+timeCreated: 1531417221
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 123092
+  packageName: Simple Collectibles Pack
+  packageVersion: 1.0
+  assetPath: Assets/SimpleCollectiblesPack/SimpleCollectibleScript.cs
+  uploadId: 255540

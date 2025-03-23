@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 276137fb47c467d479d0bd7b6732edf9
+timeCreated: 1531340072
+licenseType: Store
+DefaultImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 123092
+  packageName: Simple Collectibles Pack
+  packageVersion: 1.0
+  assetPath: Assets/SimpleCollectiblesPack/DemoScene.unity
+  uploadId: 255540

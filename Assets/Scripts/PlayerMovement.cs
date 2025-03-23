@@ -40,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
         if ((Keyboard.current.wKey.wasPressedThisFrame || Keyboard.current.upArrowKey.wasPressedThisFrame) && isGrounded)
         {
             Debug.Log("Jumping...");
-            rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0, rb.linearVelocity.z); // Reset Y velocity
+            rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0, rb.linearVelocity.z);
             rb.AddForce(Vector3.up * jumpForce, ForceMode.VelocityChange);
             isGrounded = false;
         }
@@ -50,7 +50,7 @@ public class PlayerMovement : MonoBehaviour
     {
         Debug.Log("Collided with: " + collision.gameObject.name); // Check if it's detecting ground
 
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.CompareTag("Ground") || rb.position.y < 1.5f)
         {
             Debug.Log("Landed on Ground");
             isGrounded = true;

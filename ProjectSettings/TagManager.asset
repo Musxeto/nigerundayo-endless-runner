@@ -8,6 +8,7 @@ TagManager:
   - obstacle
   - decoration
   - segment
+  - Coin
   layers:
   - Default
   - TransparentFX

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 9bee1ece51592f843996472527e9e1bc
+timeCreated: 1531340099
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 123092
+  packageName: Simple Collectibles Pack
+  packageVersion: 1.0
+  assetPath: Assets/SimpleCollectiblesPack/Materials/Collectibles 1.mat
+  uploadId: 255540
